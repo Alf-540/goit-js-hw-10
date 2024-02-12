@@ -76,7 +76,7 @@ function timerNumber({ days, hours, minutes, seconds }) {
 }
 
 function stopTimer(difference) {
-  if (difference <= 0) {
+  if (difference <= 1000) {
     clearInterval(setIntervalId);
   }
 }
