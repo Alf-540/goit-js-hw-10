@@ -3,13 +3,13 @@ import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-const btnStart = document.querySelector('button');
+const startButton = document.querySelector('button');
 const input = document.querySelector('input');
-const day = document.querySelector('.value[ data-days]');
-const hour = document.querySelector('.value[ data-hours]');
-const minute = document.querySelector('.value[ data-minutes]');
-const second = document.querySelector('.value[ data-seconds]');
-btnStart.disabled = true;
+const daysElement = document.querySelector('.value[ data-days]');
+const hoursElement = document.querySelector('.value[ data-hours]');
+const minutesElement = document.querySelector('.value[ data-minutes]');
+const secondsElement = document.querySelector('.value[ data-seconds]');
+startButton.disabled = true;
 let date = Date.now();
 let userSelectedDate;
 let difference;
@@ -30,20 +30,20 @@ const options = {
         position: 'topRight',
       });
     } else {
-      btnStart.disabled = false;
-      btnStart.style.background = '#4E75FF';
-      btnStart.style.color = '#FFF';
+      startButton.disabled = false;
+      startButton.style.background = '#4E75FF';
+      startButton.style.color = '#FFF';
     }
   },
 };
 
 flatpickr('#datetime-picker', options);
 
-btnStart.addEventListener('click', e => {
-  btnStart.disabled = true;
+startButton.addEventListener('click', e => {
+  startButton.disabled = true;
   input.disabled = true;
-  btnStart.style.background = '#CFCFCF';
-  btnStart.style.color = '#989898';
+  startButton.style.background = '#CFCFCF';
+  startButton.style.color = '#989898';
   difference = userSelectedDate - Date.now();
   timerNumber(convertMs(difference));
   setIntervalId = setInterval(() => {
@@ -69,14 +69,14 @@ function convertMs(ms) {
 }
 
 function timerNumber({ days, hours, minutes, seconds }) {
-  day.textContent = `${addLeadingZero(days)}`;
-  hour.textContent = `${addLeadingZero(hours)}`;
-  minute.textContent = `${addLeadingZero(minutes)}`;
-  second.textContent = `${addLeadingZero(seconds)}`;
+  daysElement.textContent = `${addLeadingZero(days)}`;
+  hoursElement.textContent = `${addLeadingZero(hours)}`;
+  minutesElement.textContent = `${addLeadingZero(minutes)}`;
+  secondsElement.textContent = `${addLeadingZero(seconds)}`;
 }
 
 function stopTimer(difference) {
-  if (difference <= 1000) {
+  if (difference <= 0) {
     clearInterval(setIntervalId);
   }
 }
