@@ -5,10 +5,10 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const startButton = document.querySelector('button');
 const input = document.querySelector('input');
-const daysElement = document.querySelector('.value.days');
-const hoursElement = document.querySelector('.value.hours');
-const minutesElement = document.querySelector('.value.data-minutes');
-const secondsElement = document.querySelector('.value.data-seconds');
+const daysElement = document.querySelector('[data-days]');
+const hoursElement = document.querySelector('[data-hours]');
+const minutesElement = document.querySelector('[data-minutes]');
+const secondsElement = document.querySelector('[data-seconds]');
 startButton.disabled = true;
 let date = Date.now();
 let userSelectedDate;
@@ -20,9 +20,8 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    // console.log(selectedDates[0]);
     userSelectedDate = selectedDates[0];
-    if (userSelectedDate < Date.now()) {
+    if (userSelectedDate < date) {
       iziToast.show({
         message: 'Please choose a date in the future',
         messageColor: '#FFFFFF',
