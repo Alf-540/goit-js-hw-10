@@ -5,10 +5,10 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const startButton = document.querySelector('button');
 const input = document.querySelector('input');
-const daysElement = document.querySelector('.value[ data-days]');
-const hoursElement = document.querySelector('.value[ data-hours]');
-const minutesElement = document.querySelector('.value[ data-minutes]');
-const secondsElement = document.querySelector('.value[ data-seconds]');
+const daysElement = document.querySelector('.value.days');
+const hoursElement = document.querySelector('.value.hours');
+const minutesElement = document.querySelector('.value.data-minutes');
+const secondsElement = document.querySelector('.value.data-seconds');
 startButton.disabled = true;
 let date = Date.now();
 let userSelectedDate;
